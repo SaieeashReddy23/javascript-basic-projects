@@ -73,27 +73,29 @@ const menu = [
   },
 ];
 
-const sectionCenter = document.querySelector(".section-center");
+const itemsContainer = document.querySelector(".items-container");
 
-window.addEventListener("DOMContentLoaded", function () {
-  let displayMenu = menu.map(function (item) {
-    // console.log(item);
+console.log(itemsContainer);
 
-    return `<article class="menu-item">
-          <img src=${item.img} alt=${item.title} class="photo" />
-          <div class="item-info">
-            <header>
-              <h4>${item.title}</h4>
-              <h4 class="price">$${item.price}</h4>
-            </header>
-            <p class="item-text">
-              ${item.desc}
-            </p>
+window.addEventListener("DOMContentLoaded", () => {
+  let displayMenu = menu.map((item) => {
+    console.log(item);
+
+    return `<div class="item">
+        <img src="${item.img}" class="item-img" alt="Item 1" />
+        <div class="item-text-block">
+          <div class="item-header">
+            <h3>${item.title}</h3>
+            <div class="price">$${item.price}</div>
           </div>
-        </article>`;
+          <p class="item-text">
+           ${item.desc}
+          </p>
+        </div>
+      </div>`;
   });
   displayMenu = displayMenu.join("");
   console.log(displayMenu);
 
-  sectionCenter.innerHTML = displayMenu;
+  itemsContainer.innerHTML = displayMenu;
 });

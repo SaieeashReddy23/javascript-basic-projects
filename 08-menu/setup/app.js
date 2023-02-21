@@ -72,3 +72,61 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+const btns = document.querySelectorAll(".btns");
+const itemsContainer = document.querySelector(".items-container");
+
+window.addEventListener("DOMContentLoaded", () => {
+  let displayMenu = menu.map((item) => {
+    return `<div class="item">
+        <img src="${item.img}" class="item-img" alt="Item 1" />
+        <div class="item-text-block">
+          <div class="item-header">
+            <h3>${item.title}</h3>
+            <div class="price">$${item.price}</div>
+          </div>
+          <p class="item-text">
+           ${item.desc}
+          </p>
+        </div>
+      </div>`;
+  });
+
+  displayMenu = displayMenu.join("");
+
+  itemsContainer.innerHTML = displayMenu;
+});
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let val = e.target.innerHTML;
+    let newMenu = menu.filter((item) => {
+      if (item.category === val.toLowerCase()) {
+        return true;
+      }
+
+      if (val === "All") {
+        return true;
+      }
+    });
+
+    let displayMenu = newMenu.map((item) => {
+      return `<div class="item">
+        <img src="${item.img}" class="item-img" alt="Item 1" />
+        <div class="item-text-block">
+          <div class="item-header">
+            <h3>${item.title}</h3>
+            <div class="price">$${item.price}</div>
+          </div>
+          <p class="item-text">
+           ${item.desc}
+          </p>
+        </div>
+      </div>`;
+    });
+
+    displayMenu = displayMenu.join("");
+
+    itemsContainer.innerHTML = displayMenu;
+  });
+});
