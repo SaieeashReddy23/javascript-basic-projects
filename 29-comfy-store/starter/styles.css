@@ -179,7 +179,6 @@ p {
   width: 100vw;
   height: 100vh;
   position: relative;
-  transition: var(--transition);
 }
 
 .center {
@@ -507,6 +506,8 @@ p {
 .featured-img {
   width: 100%;
   display: block;
+  height: 200px;
+  width: 300px;
   border-radius: var(--radius);
 }
 
