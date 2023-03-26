@@ -12,6 +12,7 @@ import setupPrice from "../filters/price.js";
 import { store } from "../store.js";
 import display from "../displayProducts.js";
 import { getElement } from "../utils.js";
+import fetchProducts from "../fetchProducts.js";
 
 const sliderValue = getElement(".slider-value");
 const slider = getElement(".slider");
@@ -19,3 +20,7 @@ const slider = getElement(".slider");
 slider.oninput = function () {
   sliderValue.innerHTML = `Value : ${slider.value}`;
 };
+
+const products = await fetchProducts();
+
+display(products);
